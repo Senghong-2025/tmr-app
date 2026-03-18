@@ -32,16 +32,18 @@ If Finder reports `The disk image is corrupted`, the most common causes are:
 - the downloaded file is not actually the release asset
 - macOS Gatekeeper quarantined the unsigned app
 
-Download the latest packaged `.dmg` from this repo's GitHub releases, fail fast on HTTP errors, verify the file type, then remove quarantine attributes before opening it:
+Resolve the actual `.dmg` asset from the latest GitHub release, fail fast on HTTP errors, verify the file type, then remove quarantine attributes before opening it:
 
 ```bash
-curl -fL "https://github.com/Senghong-2025/tmr-app/releases/latest/download/TMR-App-mac.dmg" -o ~/Downloads/TMR-App-mac.dmg \
+DMG_URL="$(curl -fsSL https://api.github.com/repos/Senghong-2025/tmr-app/releases/latest | grep -Eo 'https://[^"]+\\.dmg' | head -n 1)" \
+&& test -n "$DMG_URL" \
+&& curl -fL "$DMG_URL" -o ~/Downloads/TMR-App-mac.dmg \
 && file ~/Downloads/TMR-App-mac.dmg \
 && xattr -cr ~/Downloads/TMR-App-mac.dmg \
 && open ~/Downloads/TMR-App-mac.dmg
 ```
 
-If `file ~/Downloads/TMR-App-mac.dmg` does not print a disk-image type, the release asset name is wrong or the download failed.
+If `file ~/Downloads/TMR-App-mac.dmg` does not print a disk-image type, the release asset lookup failed or the download did not return the real `.dmg`.
 
 If macOS still blocks the app after mounting the `.dmg`, copy `TMR App.app` into `/Applications` and run:
 
