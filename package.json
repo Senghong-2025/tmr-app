@@ -12,6 +12,7 @@
     "build": "vue-tsc --noEmit && vite build && tsc -p tsconfig.electron.json",
     "dist": "npm run build && electron-builder",
     "dist:mac": "npm run build && electron-builder --mac",
+    "release:mac": "zsh scripts/upload-mac-release.sh",
     "dist:win": "npm run build && electron-builder --win",
     "preview": "vite preview"
   },

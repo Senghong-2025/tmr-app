@@ -53,6 +53,25 @@ file release/*.dmg \
 
 If `file ~/Downloads/TMR-App-mac.dmg` does not print a disk-image type, the release asset lookup failed or the download did not return the real `.dmg`.
 
+If the GitHub release exists but `DMG_URL` is empty, the release has no `.dmg` asset attached yet. Build and upload the macOS artifacts first:
+
+```bash
+npm run dist:mac
+npm run release:mac
+```
+
+The upload script targets the `Release` tag by default. To upload to a different tag:
+
+```bash
+npm run release:mac -- v1.0.0
+```
+
+Requirements for upload:
+
+- `gh` CLI installed
+- `gh auth login` completed
+- an existing GitHub release for the target tag
+
 If macOS still blocks the app after mounting the `.dmg`, copy `TMR App.app` into `/Applications` and run:
 
 ```bash
