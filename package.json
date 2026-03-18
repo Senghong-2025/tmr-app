@@ -15,6 +15,7 @@
     "release:mac": "zsh scripts/upload-mac-release.sh",
     "dist:win": "npm run build && electron-builder --win",
     "preview": "vite preview"
+    
   },
   "keywords": [],
   "author": "",
