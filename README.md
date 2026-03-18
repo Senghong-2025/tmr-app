@@ -27,21 +27,29 @@ npm install
 
 ### Download macOS App From GitHub Release
 
-Download the latest packaged `.dmg` from this repo's GitHub releases, remove macOS quarantine attributes, and open it:
+If Finder reports `The disk image is corrupted`, the most common causes are:
+
+- the downloaded file is not actually the release asset
+- macOS Gatekeeper quarantined the unsigned app
+
+Download the latest packaged `.dmg` from this repo's GitHub releases, fail fast on HTTP errors, verify the file type, then remove quarantine attributes before opening it:
 
 ```bash
-curl -L "https://github.com/Senghong-2025/tmr-app/releases/latest/download/TMR-App-mac.dmg" -o ~/Downloads/TMR-App-mac.dmg \
+curl -fL "https://github.com/Senghong-2025/tmr-app/releases/latest/download/TMR-App-mac.dmg" -o ~/Downloads/TMR-App-mac.dmg \
+&& file ~/Downloads/TMR-App-mac.dmg \
 && xattr -cr ~/Downloads/TMR-App-mac.dmg \
 && open ~/Downloads/TMR-App-mac.dmg
 ```
 
-Example:
+If `file ~/Downloads/TMR-App-mac.dmg` does not print a disk-image type, the release asset name is wrong or the download failed.
+
+If macOS still blocks the app after mounting the `.dmg`, copy `TMR App.app` into `/Applications` and run:
 
 ```bash
-curl -L "https://github.com/Senghong-2025/tmr-app/releases/latest/download/TMR-App-mac.dmg" -o ~/Downloads/TMR-App-mac.dmg \
-&& xattr -cr ~/Downloads/TMR-App-mac.dmg \
-&& open ~/Downloads/TMR-App-mac.dmg
+xattr -cr /Applications/TMR\ App.app
 ```
+
+This build is currently ad-hoc signed and not notarized, so end users may still need the quarantine-removal step on macOS.
 
 ### Windows
 
