@@ -50,9 +50,9 @@ function configureDownloads() {
 
 function createWindow() {
   const window = new BrowserWindow({
-    width: 1280,
-    height: 820,
-    minWidth: 960,
+    width: 430,
+    height: 932,
+    minWidth: 390,
     minHeight: 640,
     backgroundColor: '#09090b',
     webPreferences: {
