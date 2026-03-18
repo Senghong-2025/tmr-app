@@ -35,12 +35,10 @@ If Finder reports `The disk image is corrupted`, the most common causes are:
 Resolve the actual `.dmg` asset from the latest GitHub release, fail fast on HTTP errors, verify the file type, then remove quarantine attributes before opening it:
 
 ```bash
-DMG_URL="$(curl -fsSL https://api.github.com/repos/Senghong-2025/tmr-app/releases/latest | grep -Eo 'https://[^"]+\\.dmg' | head -n 1)" \
-&& test -n "$DMG_URL" \
-&& curl -fL "$DMG_URL" -o ~/Downloads/TMR-App-mac.dmg \
-&& file ~/Downloads/TMR-App-mac.dmg \
-&& xattr -cr ~/Downloads/TMR-App-mac.dmg \
-&& open ~/Downloads/TMR-App-mac.dmg
+curl -L https://github.com/Senghong-2025/tmr-app/releases/download/Release/TMR-App-mac.dmg -o ~/Downloads/TMR-App.dmg
+file ~/Downloads/TMR-App.dmg \
+&& xattr -cr ~/Downloads/TMR-App.dmg \
+&& open ~/Downloads/TMR-App.dmg
 ```
 
 If `https://api.github.com/repos/Senghong-2025/tmr-app/releases/latest` returns `404`, there is no public GitHub release available yet for this repo. Use the locally built DMG from `release/` instead:
