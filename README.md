@@ -43,6 +43,14 @@ DMG_URL="$(curl -fsSL https://api.github.com/repos/Senghong-2025/tmr-app/release
 && open ~/Downloads/TMR-App-mac.dmg
 ```
 
+If `https://api.github.com/repos/Senghong-2025/tmr-app/releases/latest` returns `404`, there is no public GitHub release available yet for this repo. Use the locally built DMG from `release/` instead:
+
+```bash
+file release/*.dmg \
+&& xattr -cr release/*.dmg \
+&& open release/*.dmg
+```
+
 If `file ~/Downloads/TMR-App-mac.dmg` does not print a disk-image type, the release asset lookup failed or the download did not return the real `.dmg`.
 
 If macOS still blocks the app after mounting the `.dmg`, copy `TMR App.app` into `/Applications` and run:
