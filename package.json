@@ -49,6 +49,7 @@
     "asar": true,
     "mac": {
       "icon": "build/mac/icon.icns",
+      "artifactName": "TMR-App-mac.${ext}",
       "target": [
         "dmg",
         "zip"
@@ -56,6 +57,7 @@
       "category": "public.app-category.productivity"
     },
     "win": {
+      "artifactName": "TMR-App-setup.${ext}",
       "target": [
         "nsis"
       ]

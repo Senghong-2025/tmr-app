@@ -27,20 +27,20 @@ npm install
 
 ### Download macOS App From GitHub Release
 
-Download a packaged `.dmg` from a GitHub release, remove macOS quarantine attributes, and open it:
+Download the latest packaged `.dmg` from this repo's GitHub releases, remove macOS quarantine attributes, and open it:
 
 ```bash
-curl -L "https://github.com/<owner>/<repo>/releases/download/<tag>/<file>.dmg" -o ~/Downloads/<file>.dmg \
-&& xattr -cr ~/Downloads/<file>.dmg \
-&& open ~/Downloads/<file>.dmg
+curl -L "https://github.com/Senghong-2025/tmr-app/releases/latest/download/TMR-App-mac.dmg" -o ~/Downloads/TMR-App-mac.dmg \
+&& xattr -cr ~/Downloads/TMR-App-mac.dmg \
+&& open ~/Downloads/TMR-App-mac.dmg
 ```
 
 Example:
 
 ```bash
-curl -L "https://github.com/cheat2001/eyebreak/releases/download/v2.3.0/EyeBreak-v2.3.0.dmg" -o ~/Downloads/EyeBreak-v2.3.0.dmg \
-&& xattr -cr ~/Downloads/EyeBreak-v2.3.0.dmg \
-&& open ~/Downloads/EyeBreak-v2.3.0.dmg
+curl -L "https://github.com/Senghong-2025/tmr-app/releases/latest/download/TMR-App-mac.dmg" -o ~/Downloads/TMR-App-mac.dmg \
+&& xattr -cr ~/Downloads/TMR-App-mac.dmg \
+&& open ~/Downloads/TMR-App-mac.dmg
 ```
 
 ### Windows
