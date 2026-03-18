@@ -84,6 +84,14 @@ This build is currently ad-hoc signed and not notarized, so end users may still 
 npm install
 ```
 
+### Download Windows App From GitHub Release
+
+Download the Windows release asset directly to your `Downloads` folder:
+
+```powershell
+Invoke-WebRequest -Uri "https://github.com/Senghong-2025/tmr-app/releases/download/Release/TMR-App-win.exe" -OutFile "$env:USERPROFILE\Downloads\TMR-App.exe"
+```
+
 ## Run In Development
 
 ### macOS
