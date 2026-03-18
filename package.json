@@ -8,6 +8,7 @@
     "dev:renderer": "vite",
     "dev:electron:ts": "tsc -p tsconfig.electron.json --watch --preserveWatchOutput",
     "dev:electron": "wait-on tcp:5173 file:dist-electron/main.js && electronmon .",
+    "icon:mac": "zsh scripts/generate-mac-icon.sh",
     "build": "vue-tsc --noEmit && vite build && tsc -p tsconfig.electron.json",
     "dist": "npm run build && electron-builder",
     "dist:mac": "npm run build && electron-builder --mac",
@@ -47,6 +48,7 @@
     ],
     "asar": true,
     "mac": {
+      "icon": "build/mac/icon.icns",
       "target": [
         "dmg",
         "zip"

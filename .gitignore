@@ -2,3 +2,5 @@ node_modules/
 dist/
 dist-electron/
 release/
+build/mac/TMR App.iconset/
+build/mac/icon_1024x1024.png
