@@ -13,6 +13,12 @@ The app opens an embedded web view for:
 
 ## Install
 
+### From GitHub
+
+```bash
+git clone https://github.com/Senghong-2025/tmr-app.git && cd tmr-app && npm install
+```
+
 ### macOS
 
 ```bash
@@ -56,8 +62,35 @@ The build output is generated in:
 - `dist/`
 - `dist-electron/`
 
+## Package Desktop App
+
+Build an installable desktop app:
+
+```bash
+npm run dist
+```
+
+Platform-specific packaging:
+
+```bash
+npm run dist:mac
+npm run dist:win
+```
+
+Packaged installers are written to:
+
+- `release/`
+
+Typical outputs:
+
+- macOS: `.dmg`
+- Windows: `.exe`
+
 ## Project Scripts
 
 - `npm run dev` starts the renderer, Electron TypeScript watcher, and Electron app
 - `npm run build` builds the renderer and Electron process
+- `npm run dist` builds and packages the desktop app
+- `npm run dist:mac` builds a macOS installer
+- `npm run dist:win` builds a Windows installer
 - `npm run preview` previews the Vite build

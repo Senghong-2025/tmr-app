@@ -9,6 +9,9 @@
     "dev:electron:ts": "tsc -p tsconfig.electron.json --watch --preserveWatchOutput",
     "dev:electron": "wait-on tcp:5173 file:dist-electron/main.js && electronmon .",
     "build": "vue-tsc --noEmit && vite build && tsc -p tsconfig.electron.json",
+    "dist": "npm run build && electron-builder",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:win": "npm run build && electron-builder --win",
     "preview": "vite preview"
   },
   "keywords": [],
@@ -20,6 +23,7 @@
     "@vitejs/plugin-vue": "^6.0.5",
     "concurrently": "^9.2.1",
     "electron": "^41.0.3",
+    "electron-builder": "^26.8.1",
     "electronmon": "^2.0.4",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
@@ -29,5 +33,30 @@
   },
   "dependencies": {
     "vue": "^3.5.22"
+  },
+  "build": {
+    "appId": "com.senghong.tmrapp",
+    "productName": "TMR App",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
   }
 }
